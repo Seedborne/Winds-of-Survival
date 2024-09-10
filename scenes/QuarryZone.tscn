@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://co6yuwb1ketvk"]
+
+[ext_resource type="Script" path="res://scripts/quarry_zone.gd" id="1_lc7tx"]
+[ext_resource type="Texture2D" uid="uid://y1gc5f2ut36m" path="res://assets/stormart upper area4.png" id="1_xrciw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnps1"]
+size = Vector2(496, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_js4l0"]
+size = Vector2(192, 416)
+
+[node name="QuarryZone" type="Node2D"]
+script = ExtResource("1_lc7tx")
+
+[node name="QuarryZoneBackground" type="Sprite2D" parent="."]
+position = Vector2(2400, -952)
+texture = ExtResource("1_xrciw")
+
+[node name="ZoneTransitionA" type="Area2D" parent="."]
+position = Vector2(4240, 520)
+
+[node name="ZoneCollisionA" type="CollisionShape2D" parent="ZoneTransitionA"]
+shape = SubResource("RectangleShape2D_pnps1")
+
+[node name="ZoneTransitionB" type="Area2D" parent="."]
+position = Vector2(96, -240)
+
+[node name="ZoneCollisionB" type="CollisionShape2D" parent="ZoneTransitionB"]
+shape = SubResource("RectangleShape2D_js4l0")
+
+[connection signal="body_entered" from="ZoneTransitionA" to="." method="_on_ZoneTransitionA_body_entered"]
+[connection signal="body_entered" from="ZoneTransitionB" to="." method="_on_ZoneTransitionB_body_entered"]

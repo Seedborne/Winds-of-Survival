@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmsebc0vv0uql"]
+
+[ext_resource type="Script" path="res://scripts/forest_zone.gd" id="1_05smd"]
+[ext_resource type="Texture2D" uid="uid://cvhvw802o74s6" path="res://assets/stormart upper area1.png" id="2_rj7ms"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8lf8"]
+size = Vector2(340, 144)
+
+[node name="ForestZone" type="Node2D"]
+script = ExtResource("1_05smd")
+
+[node name="ForestZoneBackground" type="Sprite2D" parent="."]
+position = Vector2(2400, -952)
+texture = ExtResource("2_rj7ms")
+
+[node name="ZoneTransitionA" type="Area2D" parent="."]
+position = Vector2(376, 616)
+
+[node name="ZoneCollisionA" type="CollisionShape2D" parent="ZoneTransitionA"]
+shape = SubResource("RectangleShape2D_r8lf8")
+
+[node name="ZoneTransitionB" type="Area2D" parent="."]
+position = Vector2(4232, -2480)
+
+[node name="ZoneCollisionB" type="CollisionShape2D" parent="ZoneTransitionB"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_r8lf8")
+
+[connection signal="body_entered" from="ZoneTransitionA" to="." method="_on_ZoneTransitionA_body_entered"]
+[connection signal="body_entered" from="ZoneTransitionB" to="." method="_on_ZoneTransitionB_body_entered"]
