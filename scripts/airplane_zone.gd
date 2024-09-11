@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var airplane_position_a: Vector2 = Vector2(4500, -250)
+@export var airplane_position_a: Vector2 = Vector2(3150, -175)
 
 func _ready():
 	var player = get_node("/root/Player")

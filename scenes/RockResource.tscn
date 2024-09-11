@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0vrxs3ij3tqx"]
+
+[ext_resource type="Script" path="res://scripts/rock_resource.gd" id="1_f8jx6"]
+[ext_resource type="Texture2D" uid="uid://bv0xbcbotybmx" path="res://assets/rock.png" id="1_xt1w3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24ttw"]
+size = Vector2(160, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xotcy"]
+size = Vector2(144, 88)
+
+[node name="RockResource" type="Node2D" groups=["resources"]]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_f8jx6")
+
+[node name="RockSprite" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xt1w3")
+
+[node name="RockArea" type="Area2D" parent="."]
+
+[node name="RockCollision" type="CollisionShape2D" parent="RockArea"]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_24ttw")
+
+[node name="InteractLabel" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -8.0
+offset_top = 32.0
+offset_right = 1.0
+offset_bottom = 55.0
+text = "E"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-24, 88)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(24, -44)
+shape = SubResource("RectangleShape2D_xotcy")
+
+[connection signal="body_entered" from="RockArea" to="." method="_on_rock_area_body_entered"]
+[connection signal="body_exited" from="RockArea" to="." method="_on_rock_area_body_exited"]

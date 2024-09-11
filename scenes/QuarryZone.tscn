@@ -10,6 +10,7 @@ size = Vector2(496, 256)
 size = Vector2(192, 416)
 
 [node name="QuarryZone" type="Node2D"]
+scale = Vector2(0.7, 0.7)
 script = ExtResource("1_lc7tx")
 
 [node name="QuarryZoneBackground" type="Sprite2D" parent="."]

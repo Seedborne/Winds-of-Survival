@@ -11,16 +11,16 @@ func _process(_delta):
 		limit_bottom = 1425
 	elif Globals.current_zone == "ForestZone":
 		limit_left = 0
-		limit_right = 4800
-		limit_top = -2550
-		limit_bottom = 650
+		limit_right = 3360
+		limit_top = -1750
+		limit_bottom = 450
 	elif Globals.current_zone == "QuarryZone":
 		limit_left = 0
-		limit_right = 4800
-		limit_top = -2550
-		limit_bottom = 650
+		limit_right = 3360
+		limit_top = -1750
+		limit_bottom = 450
 	elif Globals.current_zone == "AirplaneZone":
 		limit_left = 0
-		limit_right = 4800
-		limit_top = -2550
-		limit_bottom = 650
+		limit_right = 3360
+		limit_top = -1750
+		limit_bottom = 450

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://fykn11hf45n5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbudb"]
+
+[node name="MetalResource" type="Node2D" groups=["resources"]]
+
+[node name="MetalSprite" type="Sprite2D" parent="."]
+
+[node name="MetalArea" type="Area2D" parent="."]
+
+[node name="MetalCollision" type="CollisionShape2D" parent="MetalArea"]
+shape = SubResource("RectangleShape2D_rbudb")

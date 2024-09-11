@@ -17,6 +17,12 @@ func _ready():
 func _process(_delta):
 	pass
 
+func _on_enter_shack_area_body_entered(_body):
+	$ShackSprite.hide()
+
+func _on_exit_shack_area_body_entered(_body):
+	$ShackSprite.show()
+
 func _on_ZoneTransition_body_entered(body: Node) -> void:
 	if body is Player:
 		load_new_zone()

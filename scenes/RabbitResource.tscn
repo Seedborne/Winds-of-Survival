@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2l371qkknpie"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s07ps"]
+
+[node name="RabbitResource" type="Node2D" groups=["resources"]]
+
+[node name="RabbitSprite" type="Sprite2D" parent="."]
+
+[node name="RabbitArea" type="Area2D" parent="."]
+
+[node name="RabbitCollision" type="CollisionShape2D" parent="RabbitArea"]
+shape = SubResource("RectangleShape2D_s07ps")

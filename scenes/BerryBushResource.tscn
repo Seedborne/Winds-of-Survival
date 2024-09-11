@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn2u31q7le7s6"]
+
+[ext_resource type="Script" path="res://scripts/berry_bush_resource.gd" id="1_6x8gh"]
+[ext_resource type="Texture2D" uid="uid://c20lbxdnk180l" path="res://assets/berrybush.png" id="1_xvfgr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3thf6"]
+size = Vector2(264, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6cywo"]
+size = Vector2(200, 96)
+
+[node name="BerryBushResource" type="Node2D" groups=["resources"]]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_6x8gh")
+
+[node name="BushSprite" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xvfgr")
+
+[node name="BushArea" type="Area2D" parent="."]
+
+[node name="BushCollision" type="CollisionShape2D" parent="BushArea"]
+position = Vector2(-4, 24)
+shape = SubResource("RectangleShape2D_3thf6")
+
+[node name="InteractLabel" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -8.0
+offset_top = 16.0
+offset_right = 1.0
+offset_bottom = 39.0
+text = "E"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-12, 24)
+shape = SubResource("RectangleShape2D_6cywo")
+
+[connection signal="body_entered" from="BushArea" to="." method="_on_bush_area_body_entered"]
+[connection signal="body_exited" from="BushArea" to="." method="_on_bush_area_body_exited"]

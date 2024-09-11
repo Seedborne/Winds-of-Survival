@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var quarry_position_a: Vector2 = Vector2(4250, 100)
-@export var quarry_position_b: Vector2 = Vector2(250, -250)
+@export var quarry_position_a: Vector2 = Vector2(3000, 70)
+@export var quarry_position_b: Vector2 = Vector2(175, -175)
 
 func _ready():
 	var player = get_node("/root/Player")

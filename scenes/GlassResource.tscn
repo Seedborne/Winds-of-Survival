@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5n0flnwnrcr6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcfxk"]
+
+[node name="GlassResource" type="Node2D" groups=["resources"]]
+
+[node name="GlassSprite" type="Sprite2D" parent="."]
+
+[node name="GlassArea" type="Area2D" parent="."]
+
+[node name="GlassCollision" type="CollisionShape2D" parent="GlassArea"]
+shape = SubResource("RectangleShape2D_pcfxk")
