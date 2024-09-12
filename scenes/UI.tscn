@@ -1,6 +1,62 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjx4feiqmyjvc"]
+[gd_scene load_steps=9 format=3 uid="uid://bjx4feiqmyjvc"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_882uc"]
+[ext_resource type="Texture2D" uid="uid://cuseiwyeyoe5o" path="res://assets/settings.png" id="2_q3i0a"]
+[ext_resource type="Script" path="res://scripts/settings_button.gd" id="3_bjtju"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vddsv"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_akm17"]
+bg_color = Color(0.960784, 0.960784, 0.960784, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5i5a4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_846gc"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 0.607843)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqx7m"]
+bg_color = Color(0.960351, 0.960351, 0.960351, 1)
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_882uc")
@@ -11,10 +67,12 @@ offset_top = 584.0
 offset_right = 40.0
 offset_bottom = 637.0
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_vddsv")
 text = "B"
 
 [node name="BackpackUI" type="Control" parent="."]
 visible = false
+z_index = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
@@ -33,12 +91,28 @@ offset_left = -0.0079999
 offset_top = 0.0640001
 offset_right = 303.992
 offset_bottom = 304.064
+theme_override_styles/panel = SubResource("StyleBoxFlat_akm17")
 
 [node name="Slot1" type="TextureButton" parent="BackpackUI"]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 128.0
 disabled = true
+
+[node name="Panel1" type="Panel" parent="BackpackUI/Slot1"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5i5a4")
+
+[node name="Label1" type="Label" parent="BackpackUI/Slot1"]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 16.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "1"
 
 [node name="Slot2" type="TextureButton" parent="BackpackUI"]
 layout_mode = 0
@@ -47,12 +121,38 @@ offset_right = 288.0
 offset_bottom = 128.0
 disabled = true
 
+[node name="Panel2" type="Panel" parent="BackpackUI/Slot2"]
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5i5a4")
+
+[node name="Label2" type="Label" parent="BackpackUI/Slot2"]
+offset_left = 6.0
+offset_right = 16.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "2"
+
 [node name="Slot3" type="TextureButton" parent="BackpackUI"]
 layout_mode = 0
 offset_top = 160.0
 offset_right = 128.0
 offset_bottom = 288.0
 disabled = true
+
+[node name="Panel3" type="Panel" parent="BackpackUI/Slot3"]
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5i5a4")
+
+[node name="Label3" type="Label" parent="BackpackUI/Slot3"]
+offset_left = 6.0
+offset_right = 16.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "3"
 
 [node name="Slot4" type="TextureButton" parent="BackpackUI"]
 layout_mode = 0
@@ -62,40 +162,79 @@ offset_right = 288.0
 offset_bottom = 288.0
 disabled = true
 
+[node name="Panel4" type="Panel" parent="BackpackUI/Slot4"]
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5i5a4")
+
+[node name="Label4" type="Label" parent="BackpackUI/Slot4"]
+offset_left = 6.0
+offset_right = 16.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "4"
+
 [node name="SlotLabel1" type="Label" parent="BackpackUI"]
 layout_mode = 0
-offset_left = 88.0
-offset_top = 96.0
-offset_right = 120.0
-offset_bottom = 119.0
+offset_left = 72.0
+offset_top = 104.0
+offset_right = 127.0
+offset_bottom = 127.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 2
 
 [node name="SlotLabel2" type="Label" parent="BackpackUI"]
 layout_mode = 0
-offset_left = 248.0
-offset_top = 96.0
-offset_right = 280.0
-offset_bottom = 119.0
+offset_left = 232.0
+offset_top = 104.0
+offset_right = 287.0
+offset_bottom = 127.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 2
 
 [node name="SlotLabel3" type="Label" parent="BackpackUI"]
 layout_mode = 0
-offset_left = 88.0
-offset_top = 256.0
-offset_right = 120.0
-offset_bottom = 279.0
+offset_left = 72.0
+offset_top = 264.0
+offset_right = 127.0
+offset_bottom = 287.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 2
 
 [node name="SlotLabel4" type="Label" parent="BackpackUI"]
 layout_mode = 0
-offset_left = 248.0
-offset_top = 256.0
-offset_right = 280.0
-offset_bottom = 279.0
+offset_left = 232.0
+offset_top = 264.0
+offset_right = 287.0
+offset_bottom = 287.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 2
+
+[node name="SettingsButton" type="Button" parent="."]
+process_mode = 3
+offset_left = 1120.0
+offset_top = 8.0
+offset_right = 2406.0
+offset_bottom = 1296.0
+scale = Vector2(0.02, 0.02)
+icon = ExtResource("2_q3i0a")
+flat = true
+script = ExtResource("3_bjtju")
+
+[node name="StaminaBar" type="ProgressBar" parent="."]
+offset_left = 8.0
+offset_top = 136.0
+offset_right = 40.0
+offset_bottom = 272.0
+theme_override_styles/background = SubResource("StyleBoxFlat_846gc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vqx7m")
+fill_mode = 3
+show_percentage = false
 
 [connection signal="pressed" from="BackpackButton" to="." method="_on_backpack_button_pressed"]
 [connection signal="pressed" from="BackpackUI/Slot1" to="." method="_on_Slot1_pressed"]
 [connection signal="pressed" from="BackpackUI/Slot2" to="." method="_on_Slot2_pressed"]
 [connection signal="pressed" from="BackpackUI/Slot3" to="." method="_on_Slot3_pressed"]
 [connection signal="pressed" from="BackpackUI/Slot4" to="." method="_on_Slot4_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

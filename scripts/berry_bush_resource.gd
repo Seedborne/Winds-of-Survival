@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var respawn_time: float = 30.0
-@export var collection_time: float = 5.0
+@export var respawn_time: float = 60.0
+@export var collection_time: float = 3.0
 @export var min_distance_between_resources: float = 250.0
 
 var berries_in_bush = load("res://assets/berrybush.png")
@@ -52,16 +52,18 @@ func complete_collection() -> void:
 
 func collect_resource() -> void:
 	$BushSprite.set_texture(berriless_bush)
+	$BushArea/BushCollision.disabled = true
 	var random_amount = randi_range(4, 7)
 	if Globals.add_item_to_inventory("berry", random_amount):
 		print("Collected ", random_amount, " berries.")
-		is_available = false
-		await get_tree().create_timer(respawn_time).timeout
-		respawn_resource()
 	else:
 		print("Inventory full, couldn't collect berries.")
+	is_available = false
+	await get_tree().create_timer(respawn_time).timeout
+	respawn_resource()
 
 func respawn_resource() -> void:
 	is_available = true
 	$BushSprite.set_texture(berries_in_bush)
+	$BushArea/BushCollision.disabled = true
 	print("Bush respawned")

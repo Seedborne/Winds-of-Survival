@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var respawn_time: float = 30.0
+@export var respawn_time: float = 60.0
 @export var collection_time: float = 5.0
 @export var min_distance_between_resources: float = 250.0
 
@@ -52,6 +52,8 @@ func complete_collection() -> void:
 
 func collect_resource() -> void:
 	$RockSprite.visible = false
+	$RockArea/RockCollision.disabled = true
+	$StaticBody2D/CollisionShape2D.disabled = true
 	var stone_amount = randi_range(2, 5)
 	var coal_amount = randi_range(1, 2)
 	if Globals.add_item_to_inventory("stone", stone_amount):
@@ -69,7 +71,8 @@ func collect_resource() -> void:
 func respawn_resource() -> void:
 	is_available = true
 	$RockSprite.visible = true
-	
+	$RockArea/RockCollision.disabled = false
+	$StaticBody2D/CollisionShape2D.disabled = false
 	print("Rock respawned")
 	var attempts = 0
 	var max_attempts = 100 

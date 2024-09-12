@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var respawn_time: float = 30.0
+@export var respawn_time: float = 60.0
 @export var collection_time: float = 5.0
 @export var min_distance_between_resources: float = 250.0
 
@@ -52,19 +52,22 @@ func complete_collection() -> void:
 
 func collect_resource() -> void:
 	$TreeSprite.visible = false
+	$TreeArea/TreeCollision.disabled = true
+	$StaticBody2D/CollisionShape2D.disabled = true
 	var random_amount = randi_range(2, 5)
 	if Globals.add_item_to_inventory("wood", random_amount):
 		print("Collected ", random_amount, " wood.")
-		is_available = false
-		await get_tree().create_timer(respawn_time).timeout
-		respawn_resource()
 	else:
 		print("Inventory full, couldn't collect wood.")
+	is_available = false
+	await get_tree().create_timer(respawn_time).timeout
+	respawn_resource()
 
 func respawn_resource() -> void:
 	is_available = true
 	$TreeSprite.visible = true
-	
+	$TreeArea/TreeCollision.disabled = false
+	$StaticBody2D/CollisionShape2D.disabled = false
 	print("Tree respawned")
 	var attempts = 0
 	var max_attempts = 100
