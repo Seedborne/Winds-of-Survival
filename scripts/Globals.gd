@@ -8,8 +8,9 @@ var inventory = [
 	{"item": null, "count": 0, "item_tag": null},
 	{"item": null, "count": 0, "item_tag": null}
 ]
-
 const MAX_STACK_SIZE = 10
+var shack_strength = 0
+var level_index = 0
 
 func _ready():
 	pass

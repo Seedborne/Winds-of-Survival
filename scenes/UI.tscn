@@ -122,12 +122,14 @@ offset_bottom = 128.0
 disabled = true
 
 [node name="Panel2" type="Panel" parent="BackpackUI/Slot2"]
+layout_mode = 0
 offset_right = 128.0
 offset_bottom = 128.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5i5a4")
 
 [node name="Label2" type="Label" parent="BackpackUI/Slot2"]
+layout_mode = 0
 offset_left = 6.0
 offset_right = 16.0
 offset_bottom = 24.0
@@ -142,12 +144,14 @@ offset_bottom = 288.0
 disabled = true
 
 [node name="Panel3" type="Panel" parent="BackpackUI/Slot3"]
+layout_mode = 0
 offset_right = 128.0
 offset_bottom = 128.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5i5a4")
 
 [node name="Label3" type="Label" parent="BackpackUI/Slot3"]
+layout_mode = 0
 offset_left = 6.0
 offset_right = 16.0
 offset_bottom = 24.0
@@ -163,12 +167,14 @@ offset_bottom = 288.0
 disabled = true
 
 [node name="Panel4" type="Panel" parent="BackpackUI/Slot4"]
+layout_mode = 0
 offset_right = 128.0
 offset_bottom = 128.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5i5a4")
 
 [node name="Label4" type="Label" parent="BackpackUI/Slot4"]
+layout_mode = 0
 offset_left = 6.0
 offset_right = 16.0
 offset_bottom = 24.0
