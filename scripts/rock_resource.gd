@@ -4,12 +4,14 @@ extends Node2D
 @export var collection_time: float = 5.0
 @export var min_distance_between_resources: float = 250.0
 
+var rock1 = preload("res://assets/rock1.png")
+var rock2 = preload("res://assets/rock2.png")
 var is_available: bool = true
 var is_collecting: bool = false
 var collection_timer: float = 0.0
 
 func _ready() -> void:
-	pass
+	set_random_texture()
 
 func _process(delta: float) -> void:
 	if is_collecting:
@@ -21,6 +23,12 @@ func _process(delta: float) -> void:
 			reset_collection()
 	if Input.is_action_just_pressed("interact") and $InteractLabel.visible and is_available:
 		start_collection()
+
+func set_random_texture():
+	if randi_range(0, 1) == 0:
+		$RockSprite.texture = rock1
+	else:
+		$RockSprite.texture = rock2
 
 func _on_rock_area_body_entered(body: Node) -> void:
 	if body is Player and is_available:
@@ -70,6 +78,7 @@ func collect_resource() -> void:
 
 func respawn_resource() -> void:
 	is_available = true
+	set_random_texture()
 	$RockSprite.visible = true
 	$RockArea/RockCollision.disabled = false
 	$StaticBody2D/CollisionShape2D.disabled = false

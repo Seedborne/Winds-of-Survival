@@ -1,11 +1,11 @@
 extends Node2D
 
-@export var forest_position_a: Vector2 = Vector2(250, 250)
+@export var forest_position_a: Vector2 = Vector2(230, 0)
 @export var forest_position_b: Vector2 = Vector2(3000, -1540)
 
-@export var num_trees: int = 8
-@export var num_rocks: int = 2
-@export var num_berry_bushes: int = 6
+@export var num_trees: int = 12
+@export var num_rocks: int = 3
+@export var num_berry_bushes: int = 8
 
 @export var tree_scene: PackedScene
 @export var rock_scene: PackedScene
@@ -15,7 +15,7 @@ extends Node2D
 var valid_spawn_areas: Array
 
 func _ready() -> void:
-	valid_spawn_areas = [ $SpawnArea1, $SpawnArea2, $SpawnArea3, $SpawnArea4 ]
+	valid_spawn_areas = [ $SpawnArea1, $SpawnArea2, $SpawnArea3, $SpawnArea4, $SpawnArea5, $SpawnArea6 ]
 	tree_scene = load("res://scenes/TreeResource.tscn")
 	rock_scene = load("res://scenes/RockResource.tscn")
 	berry_bush_scene = load("res://scenes/BerryBushResource.tscn")
@@ -71,6 +71,10 @@ func get_random_spawn_position() -> Vector2:
 			collision_shape = $SpawnArea3/SpawnCollision3
 		"SpawnArea4":
 			collision_shape = $SpawnArea4/SpawnCollision4
+		"SpawnArea5":
+			collision_shape = $SpawnArea5/SpawnCollision5
+		"SpawnArea6":
+			collision_shape = $SpawnArea6/SpawnCollision6
 		_:
 			print("Error: No matching collision shape for " + spawn_area.name)
 			return Vector2.ZERO

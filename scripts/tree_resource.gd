@@ -52,6 +52,7 @@ func complete_collection() -> void:
 
 func collect_resource() -> void:
 	$TreeSprite.visible = false
+	$RootsSprite.visible = false
 	$TreeArea/TreeCollision.disabled = true
 	$StaticBody2D/CollisionShape2D.disabled = true
 	var random_amount = randi_range(2, 5)
@@ -66,6 +67,7 @@ func collect_resource() -> void:
 func respawn_resource() -> void:
 	is_available = true
 	$TreeSprite.visible = true
+	$RootsSprite.visible = true
 	$TreeArea/TreeCollision.disabled = false
 	$StaticBody2D/CollisionShape2D.disabled = false
 	print("Tree respawned")

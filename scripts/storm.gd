@@ -121,8 +121,8 @@ func update_rain_intensity(rain_progress: float) -> void:
 		rain_particles.amount = emission_amount
 		var gradient = GradientTexture2D.new()
 		var gradient_data = Gradient.new()
-		var start_color = Color("3c3f60")
-		var end_color = Color("05060e")
+		var start_color = Color("ffffff")
+		var end_color = Color("ffffff")
 		gradient_data.add_point(0.0, start_color)
 		gradient_data.add_point(1.0, end_color)
 		gradient.gradient = gradient_data

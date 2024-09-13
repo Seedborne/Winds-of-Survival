@@ -1,11 +1,11 @@
 extends Node2D
 
 @export var respawn_time: float = 60.0
-@export var collection_time: float = 3.0
+@export var collection_time: float = 2.0
 @export var min_distance_between_resources: float = 250.0
 
-var berries_in_bush = load("res://assets/berrybush.png")
-var berriless_bush = load("res://assets/bush.png")
+var berries_in_bush = load("res://assets/Bushwith.png")
+var berriless_bush = load("res://assets/bushwithout.png")
 
 var is_available: bool = true
 var is_collecting: bool = false
@@ -65,5 +65,5 @@ func collect_resource() -> void:
 func respawn_resource() -> void:
 	is_available = true
 	$BushSprite.set_texture(berries_in_bush)
-	$BushArea/BushCollision.disabled = true
+	$BushArea/BushCollision.disabled = false
 	print("Bush respawned")
