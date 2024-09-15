@@ -1,12 +1,69 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2l371qkknpie"]
+[gd_scene load_steps=8 format=3 uid="uid://b2l371qkknpie"]
+
+[ext_resource type="Texture2D" uid="uid://yqnnsd3ewwwp" path="res://assets/rabbit.png" id="1_sx24i"]
+[ext_resource type="Script" path="res://scripts/rabbit_resource.gd" id="1_you8w"]
+[ext_resource type="Texture2D" uid="uid://cfpvd7yvkt0w8" path="res://assets/rabbit2.png" id="2_sordf"]
+[ext_resource type="AudioStream" uid="uid://bb5sklehj2dom" path="res://assets/newaudio/rabbitcrabcollect.mp3" id="4_a6fqg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_60rwu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sx24i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sordf")
+}],
+"loop": true,
+"name": &"bounce",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s07ps"]
+size = Vector2(160, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5iukx"]
+size = Vector2(104, 56)
 
 [node name="RabbitResource" type="Node2D" groups=["resources"]]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_you8w")
 
-[node name="RabbitSprite" type="Sprite2D" parent="."]
+[node name="RabbitSprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_60rwu")
+animation = &"bounce"
+frame_progress = 0.0621121
 
 [node name="RabbitArea" type="Area2D" parent="."]
 
 [node name="RabbitCollision" type="CollisionShape2D" parent="RabbitArea"]
+position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_s07ps")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4, 44)
+shape = SubResource("RectangleShape2D_5iukx")
+
+[node name="InteractLabel" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -96.0
+offset_top = 48.0
+offset_right = 92.0
+offset_bottom = 98.0
+theme_override_colors/font_color = Color(0.945098, 0.905882, 0.807843, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 28
+text = "E to collect"
+horizontal_alignment = 1
+
+[node name="RabbitAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_a6fqg")
+volume_db = 18.0
+
+[connection signal="body_entered" from="RabbitArea" to="." method="_on_rabbit_area_body_entered"]
+[connection signal="body_exited" from="RabbitArea" to="." method="_on_rabbit_area_body_exited"]

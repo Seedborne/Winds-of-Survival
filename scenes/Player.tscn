@@ -1,11 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://bx7xrvoauljuh"]
+[gd_scene load_steps=26 format=3 uid="uid://bx7xrvoauljuh"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kr5vx"]
 [ext_resource type="Texture2D" uid="uid://b8x3v07i32yaa" path="res://assets/frontneutral.png" id="2_1uowt"]
+[ext_resource type="Texture2D" uid="uid://dj2c4gw10fcc5" path="res://assets/zbolt3.png" id="2_gbpav"]
 [ext_resource type="Texture2D" uid="uid://dxdqgf30ay70w" path="res://assets/leftneutral.png" id="3_fexfg"]
 [ext_resource type="Script" path="res://scripts/player_camera.gd" id="3_l1bov"]
+[ext_resource type="Texture2D" uid="uid://bsfqavrk8hxwb" path="res://assets/zbolt2.png" id="3_vp7yt"]
+[ext_resource type="Texture2D" uid="uid://6dbdyuqbe3j0" path="res://assets/zbolt1.png" id="4_rr6o4"]
 [ext_resource type="Texture2D" uid="uid://vp0fr514jx8j" path="res://assets/rightneutral.png" id="4_ywe2h"]
 [ext_resource type="Texture2D" uid="uid://bp54lmlq4yjyr" path="res://assets/backneutral.png" id="5_lj6bp"]
+[ext_resource type="Texture2D" uid="uid://dy3gmvhg6oy0b" path="res://assets/zbolt4.png" id="5_yy1vo"]
 [ext_resource type="Texture2D" uid="uid://cnjwmlrpff2c6" path="res://assets/fwalk1.png" id="6_6l650"]
 [ext_resource type="Texture2D" uid="uid://d005qmej7f0g0" path="res://assets/fwalk2.png" id="7_gkbmf"]
 [ext_resource type="Texture2D" uid="uid://cu30bujqjyt2v" path="res://assets/fwalk3.png" id="8_l78kk"]
@@ -18,9 +22,33 @@
 [ext_resource type="Texture2D" uid="uid://bxf7ly10tud4a" path="res://assets/back1.png" id="15_w2tny"]
 [ext_resource type="Texture2D" uid="uid://b01m8r0smlfwq" path="res://assets/back2.png" id="16_j4m1a"]
 [ext_resource type="Texture2D" uid="uid://cbkduy417ddnx" path="res://assets/back3.png" id="17_f3d7b"]
+[ext_resource type="Texture2D" uid="uid://bsfwwutmmob4p" path="res://assets/boltcolor.png" id="22_7jxjg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_24mdq"]
 animations = [{
+"frames": [{
+"duration": 0.1,
+"texture": ExtResource("5_yy1vo")
+}, {
+"duration": 1.2,
+"texture": ExtResource("2_gbpav")
+}, {
+"duration": 0.8,
+"texture": ExtResource("3_vp7yt")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_rr6o4")
+}, {
+"duration": 0.8,
+"texture": ExtResource("3_vp7yt")
+}, {
+"duration": 10.0,
+"texture": ExtResource("5_yy1vo")
+}],
+"loop": true,
+"name": &"electrocution",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_1uowt")
@@ -118,11 +146,17 @@ z_index = 1
 position = Vector2(576, 320)
 script = ExtResource("1_kr5vx")
 
+[node name="LightningSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(8, -56)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("22_7jxjg")
+
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_24mdq")
 animation = &"idle_down"
-speed_scale = 1.3
+speed_scale = 1.5
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_q21r7")

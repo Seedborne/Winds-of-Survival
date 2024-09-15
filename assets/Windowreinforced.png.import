@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/Windowreinforced.png-3e8a33ddde17fa82df4b9bad
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

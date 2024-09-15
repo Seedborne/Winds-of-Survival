@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/palm2.png-e0a6a3904237ce2121486ae6756d0a11.ct
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

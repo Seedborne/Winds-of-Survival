@@ -1,12 +1,52 @@
-[gd_scene load_steps=2 format=3 uid="uid://fykn11hf45n5"]
+[gd_scene load_steps=6 format=3 uid="uid://fykn11hf45n5"]
+
+[ext_resource type="Script" path="res://scripts/metal_resource.gd" id="1_55b85"]
+[ext_resource type="Texture2D" uid="uid://cms35egj8bktb" path="res://assets/scrap.png" id="2_21qca"]
+[ext_resource type="AudioStream" uid="uid://diihud4isbl5r" path="res://assets/newaudio/collecting_metal.mp3" id="3_4moqm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rbudb"]
+size = Vector2(208, 176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4d7d2"]
+size = Vector2(176, 144)
 
 [node name="MetalResource" type="Node2D" groups=["resources"]]
+script = ExtResource("1_55b85")
 
 [node name="MetalSprite" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_21qca")
 
 [node name="MetalArea" type="Area2D" parent="."]
 
 [node name="MetalCollision" type="CollisionShape2D" parent="MetalArea"]
 shape = SubResource("RectangleShape2D_rbudb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-24, 88)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(24, -88)
+shape = SubResource("RectangleShape2D_4d7d2")
+
+[node name="InteractLabel" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -96.0
+offset_top = 24.0
+offset_right = 92.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.945098, 0.905882, 0.807843, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "E to collect"
+horizontal_alignment = 1
+
+[node name="MetalAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4moqm")
+volume_db = 15.0
+
+[connection signal="body_entered" from="MetalArea" to="." method="_on_metal_area_body_entered"]
+[connection signal="body_exited" from="MetalArea" to="." method="_on_metal_area_body_exited"]

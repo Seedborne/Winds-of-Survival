@@ -1,28 +1,37 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmsebc0vv0uql"]
+[gd_scene load_steps=13 format=3 uid="uid://bmsebc0vv0uql"]
 
 [ext_resource type="Script" path="res://scripts/forest_zone.gd" id="1_05smd"]
-[ext_resource type="Texture2D" uid="uid://110os3fbjmse" path="res://assets/fb1.png" id="2_yl1ds"]
+[ext_resource type="Texture2D" uid="uid://bve4ctxb8pg03" path="res://assets/forest.png" id="2_pwx61"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8lf8"]
-size = Vector2(605.714, 537.143)
+size = Vector2(959.696, 586.639)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mrp8"]
+size = Vector2(742.857, 330.001)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tnwuk"]
-size = Vector2(205.714, 2720)
+size = Vector2(171.43, 2651.43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_waphc"]
-size = Vector2(1417.14, 571.429)
+size = Vector2(1371.43, 565.716)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2nhc"]
-size = Vector2(3531.43, 417.147)
+size = Vector2(520.001, 1782.86)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxyix"]
-size = Vector2(1554.28, 171.429)
+size = Vector2(1815.34, 764.057)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crraj"]
-size = Vector2(720.002, 1211.43)
+size = Vector2(560.002, 514.288)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_576co"]
-size = Vector2(925.716, 411.429)
+size = Vector2(2181.64, 631.379)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5k5w"]
+size = Vector2(1583.86, 981.641)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l875w"]
+size = Vector2(226.033, 579.359)
 
 [node name="ForestZone" type="Node2D"]
 scale = Vector2(0.7, 0.7)
@@ -30,13 +39,14 @@ script = ExtResource("1_05smd")
 
 [node name="ForestZoneBackground" type="Sprite2D" parent="."]
 position = Vector2(2400, -952)
-texture = ExtResource("2_yl1ds")
+texture = ExtResource("2_pwx61")
 
 [node name="ZoneTransitionA" type="Area2D" parent="."]
 position = Vector2(376, 616)
 
 [node name="ZoneCollisionA" type="CollisionShape2D" parent="ZoneTransitionA"]
-position = Vector2(-238.857, -170.286)
+position = Vector2(-193.143, -147.429)
+rotation = 0.598648
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_r8lf8")
 
@@ -44,56 +54,77 @@ shape = SubResource("RectangleShape2D_r8lf8")
 position = Vector2(4232, -2480)
 
 [node name="ZoneCollisionB" type="CollisionShape2D" parent="ZoneTransitionB"]
-position = Vector2(2.28613, -102.857)
-shape = SubResource("RectangleShape2D_r8lf8")
+position = Vector2(-20.5713, 52.1423)
+shape = SubResource("RectangleShape2D_4mrp8")
 
 [node name="SpawnArea1" type="Area2D" parent="."]
 position = Vector2(4628.57, -902.857)
 
 [node name="SpawnCollision1" type="CollisionShape2D" parent="SpawnArea1"]
-position = Vector2(34.2861, 68.5715)
+position = Vector2(17.144, 34.2864)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_tnwuk")
 
 [node name="SpawnArea2" type="Area2D" parent="."]
-position = Vector2(1737.14, 217.143)
+position = Vector2(1737.14, 365.714)
 
 [node name="SpawnCollision2" type="CollisionShape2D" parent="SpawnArea2"]
-position = Vector2(102.858, 68.5714)
-scale = Vector2(0.999999, 0.999999)
+position = Vector2(0.00280762, -37.143)
+scale = Vector2(0.999997, 0.999997)
 shape = SubResource("RectangleShape2D_waphc")
 
 [node name="SpawnArea3" type="Area2D" parent="."]
-position = Vector2(1794.29, -2274.29)
+position = Vector2(331.429, -1577.14)
 
 [node name="SpawnCollision3" type="CollisionShape2D" parent="SpawnArea3"]
-position = Vector2(17.1434, -14.2834)
-scale = Vector2(0.999999, 0.999999)
+position = Vector2(-11.4286, -34.2856)
+scale = Vector2(0.999997, 0.999997)
 shape = SubResource("RectangleShape2D_l2nhc")
 
 [node name="SpawnArea4" type="Area2D" parent="."]
-position = Vector2(1965.71, -194.286)
+position = Vector2(2411.43, -377.143)
 
 [node name="SpawnCollision4" type="CollisionShape2D" parent="SpawnArea4"]
-position = Vector2(205.717, 62.8573)
-scale = Vector2(0.999999, 0.999999)
+position = Vector2(-195.746, 185.449)
+rotation = -0.47822
+scale = Vector2(0.999998, 0.999998)
 shape = SubResource("RectangleShape2D_cxyix")
 
 [node name="SpawnArea5" type="Area2D" parent="."]
-position = Vector2(297.143, -1634.29)
+position = Vector2(3291.43, -754.286)
 
 [node name="SpawnCollision5" type="CollisionShape2D" parent="SpawnArea5"]
-position = Vector2(120, 160.004)
-scale = Vector2(0.999998, 0.999998)
+position = Vector2(-11.4287, -11.4286)
+rotation = -0.47822
+scale = Vector2(0.999996, 0.999996)
 shape = SubResource("RectangleShape2D_crraj")
 
 [node name="SpawnArea6" type="Area2D" parent="."]
-position = Vector2(880, -1897.14)
+position = Vector2(2548.57, -2205.71)
+rotation = -0.174533
 
 [node name="SpawnCollision6" type="CollisionShape2D" parent="SpawnArea6"]
-position = Vector2(360, 34.283)
-scale = Vector2(0.999998, 0.999998)
+position = Vector2(-0.000488281, -31.8821)
+scale = Vector2(0.999997, 0.999997)
 shape = SubResource("RectangleShape2D_576co")
+
+[node name="SpawnArea7" type="Area2D" parent="."]
+position = Vector2(914.286, -1794.29)
+
+[node name="SpawnCollision7" type="CollisionShape2D" parent="SpawnArea7"]
+position = Vector2(0.000465393, 0.00286198)
+rotation = -0.628318
+scale = Vector2(0.999997, 0.999997)
+shape = SubResource("RectangleShape2D_e5k5w")
+
+[node name="SpawnArea8" type="Area2D" parent="."]
+position = Vector2(3760, -1222.86)
+
+[node name="SpawnCollision8" type="CollisionShape2D" parent="SpawnArea8"]
+position = Vector2(-73.7534, 64.1315)
+rotation = 0.837758
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_l875w")
 
 [connection signal="body_entered" from="ZoneTransitionA" to="." method="_on_ZoneTransitionA_body_entered"]
 [connection signal="body_entered" from="ZoneTransitionB" to="." method="_on_ZoneTransitionB_body_entered"]

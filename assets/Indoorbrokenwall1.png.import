@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/Indoorbrokenwall1.png-43acda59dde1a2d69d8fa88
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

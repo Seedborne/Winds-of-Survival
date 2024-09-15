@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var respawn_time: float = 60.0
-@export var collection_time: float = 5.0
+@export var collection_time: float = 2.0
 @export var min_distance_between_resources: float = 250.0
 
 var rock1 = preload("res://assets/rock1.png")
@@ -9,6 +9,7 @@ var rock2 = preload("res://assets/rock2.png")
 var is_available: bool = true
 var is_collecting: bool = false
 var collection_timer: float = 0.0
+var near_resource: bool = false
 
 func _ready() -> void:
 	set_random_texture()
@@ -21,7 +22,7 @@ func _process(delta: float) -> void:
 				complete_collection()
 		else:
 			reset_collection()
-	if Input.is_action_just_pressed("interact") and $InteractLabel.visible and is_available:
+	if Input.is_action_just_pressed("interact") and near_resource and is_available:
 		start_collection()
 
 func set_random_texture():
@@ -32,19 +33,20 @@ func set_random_texture():
 
 func _on_rock_area_body_entered(body: Node) -> void:
 	if body is Player and is_available:
-		$InteractLabel.show()
-		if Input.is_action_pressed("interact"):
-			await get_tree().create_timer(collection_time).timeout
-			collect_resource()
+		near_resource = true
+		if Globals.tutorial_mode_on:
+			$InteractLabel.show()
 
 func _on_rock_area_body_exited(body: Node) -> void:
 	if body is Player:
+		near_resource = false
 		$InteractLabel.visible = false
 		reset_collection()
 
 func start_collection() -> void:
 	is_collecting = true
 	collection_timer = 0.0
+	$RockAudio.play()
 	print("Player started collecting...")
 
 func reset_collection() -> void:

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/Brokenwindow.png-df10924ae402e27d90ac544eca93
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

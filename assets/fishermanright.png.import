@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/fishermanright.png-45e2c8c2e90d8982893e20c603
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

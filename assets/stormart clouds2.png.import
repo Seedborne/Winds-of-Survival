@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/stormart clouds2.png-f75522f4921546b3da443d9e
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

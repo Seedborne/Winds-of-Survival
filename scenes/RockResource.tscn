@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0vrxs3ij3tqx"]
+[gd_scene load_steps=6 format=3 uid="uid://c0vrxs3ij3tqx"]
 
 [ext_resource type="Script" path="res://scripts/rock_resource.gd" id="1_f8jx6"]
-[ext_resource type="Texture2D" uid="uid://qvp5vhhv3gcs" path="res://assets/rock1.png" id="2_xhobv"]
+[ext_resource type="Texture2D" uid="uid://7pw773v1mdwk" path="res://assets/rock2.png" id="2_x66qy"]
+[ext_resource type="AudioStream" uid="uid://dkx3u7ckn1lts" path="res://assets/newaudio/collecting_stone.mp3" id="3_8ytbf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24ttw"]
-size = Vector2(205.714, 137.143)
+size = Vector2(228.571, 137.143)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xotcy"]
-size = Vector2(182.857, 102.857)
+size = Vector2(205.714, 102.857)
 
 [node name="RockResource" type="Node2D" groups=["resources"]]
 scale = Vector2(0.7, 0.7)
@@ -15,29 +16,39 @@ script = ExtResource("1_f8jx6")
 
 [node name="RockSprite" type="Sprite2D" parent="."]
 z_index = 1
-texture = ExtResource("2_xhobv")
+texture = ExtResource("2_x66qy")
 
 [node name="RockArea" type="Area2D" parent="."]
 
 [node name="RockCollision" type="CollisionShape2D" parent="RockArea"]
-position = Vector2(-11.4286, 45.7143)
+position = Vector2(4.90461e-05, 45.7143)
 shape = SubResource("RectangleShape2D_24ttw")
-
-[node name="InteractLabel" type="Label" parent="."]
-visible = false
-z_index = 1
-offset_left = -8.0
-offset_top = 32.0
-offset_right = 1.0
-offset_bottom = 55.0
-text = "E"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-24, 88)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(12.5714, -36.5714)
+position = Vector2(24, -36.5714)
 shape = SubResource("RectangleShape2D_xotcy")
+
+[node name="InteractLabel" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -102.857
+offset_top = 22.8571
+offset_right = 85.1429
+offset_bottom = 125.857
+theme_override_colors/font_color = Color(0.945098, 0.905882, 0.807843, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Hold E 
+to mine"
+horizontal_alignment = 1
+
+[node name="RockAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_8ytbf")
+volume_db = 18.0
 
 [connection signal="body_entered" from="RockArea" to="." method="_on_rock_area_body_entered"]
 [connection signal="body_exited" from="RockArea" to="." method="_on_rock_area_body_exited"]

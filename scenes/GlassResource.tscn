@@ -1,12 +1,53 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5n0flnwnrcr6"]
+[gd_scene load_steps=6 format=3 uid="uid://b5n0flnwnrcr6"]
+
+[ext_resource type="Script" path="res://scripts/glass_resource.gd" id="1_1ev4i"]
+[ext_resource type="Texture2D" uid="uid://bqei7138lrfao" path="res://assets/bottle.png" id="2_j26kf"]
+[ext_resource type="AudioStream" uid="uid://cxn1fpwe3ajow" path="res://assets/newaudio/glass-bottle-clink-90671.mp3" id="3_q54qw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pcfxk"]
+size = Vector2(106.96, 65.3649)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gn2t8"]
+size = Vector2(80, 29.7917)
 
 [node name="GlassResource" type="Node2D" groups=["resources"]]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_1ev4i")
 
 [node name="GlassSprite" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_j26kf")
 
 [node name="GlassArea" type="Area2D" parent="."]
+rotation = -0.380482
 
 [node name="GlassCollision" type="CollisionShape2D" parent="GlassArea"]
+position = Vector2(-4.76837e-07, 0)
 shape = SubResource("RectangleShape2D_pcfxk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+rotation = -0.359538
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-2.38419e-07, -2.89584)
+shape = SubResource("RectangleShape2D_gn2t8")
+
+[node name="InteractLabel" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -96.0
+offset_right = 92.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0.945098, 0.905882, 0.807843, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 28
+text = "E to collect"
+horizontal_alignment = 1
+
+[node name="GlassAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_q54qw")
+volume_db = 8.0
+
+[connection signal="body_entered" from="GlassArea" to="." method="_on_glass_area_body_entered"]
+[connection signal="body_exited" from="GlassArea" to="." method="_on_glass_area_body_exited"]

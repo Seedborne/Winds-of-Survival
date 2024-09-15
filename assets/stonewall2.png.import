@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/stonewall2.png-8e7b0cfd289fd0866044ef052a4bcf
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

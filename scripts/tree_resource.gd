@@ -1,12 +1,13 @@
 extends Node2D
 
 @export var respawn_time: float = 60.0
-@export var collection_time: float = 5.0
+@export var collection_time: float = 2.0
 @export var min_distance_between_resources: float = 250.0
 
 var is_available: bool = true
 var is_collecting: bool = false
 var collection_timer: float = 0.0
+var near_resource: bool = false
 
 func _ready() -> void:
 	pass
@@ -19,24 +20,26 @@ func _process(delta: float) -> void:
 				complete_collection()
 		else:
 			reset_collection()
-	if Input.is_action_just_pressed("interact") and $InteractLabel.visible and is_available:
+	if Input.is_action_just_pressed("interact") and near_resource and is_available:
 		start_collection()
 
 func _on_tree_area_body_entered(body: Node) -> void:
 	if body is Player and is_available:
-		$InteractLabel.show()
-		if Input.is_action_pressed("interact"):
-			await get_tree().create_timer(collection_time).timeout
-			collect_resource()
+		near_resource = true
+		if Globals.tutorial_mode_on:
+			$InteractLabel.show()
+			
 
 func _on_tree_area_body_exited(body: Node) -> void:
 	if body is Player:
+		near_resource = false
 		$InteractLabel.visible = false
 		reset_collection()
 
 func start_collection() -> void:
 	is_collecting = true
 	collection_timer = 0.0
+	$TreeAudio.play()
 	print("Player started collecting...")
 
 func reset_collection() -> void:
@@ -52,7 +55,6 @@ func complete_collection() -> void:
 
 func collect_resource() -> void:
 	$TreeSprite.visible = false
-	$RootsSprite.visible = false
 	$TreeArea/TreeCollision.disabled = true
 	$StaticBody2D/CollisionShape2D.disabled = true
 	var random_amount = randi_range(2, 5)
@@ -67,7 +69,6 @@ func collect_resource() -> void:
 func respawn_resource() -> void:
 	is_available = true
 	$TreeSprite.visible = true
-	$RootsSprite.visible = true
 	$TreeArea/TreeCollision.disabled = false
 	$StaticBody2D/CollisionShape2D.disabled = false
 	print("Tree respawned")

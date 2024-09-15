@@ -1,10 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpon2atu8kbrb"]
+[gd_scene load_steps=16 format=3 uid="uid://cpon2atu8kbrb"]
 
 [ext_resource type="Script" path="res://scripts/airplane_zone.gd" id="1_uyhfs"]
-[ext_resource type="Texture2D" uid="uid://bqhqem1iofie5" path="res://assets/stormart upper area6png.png" id="2_30t8t"]
+[ext_resource type="Texture2D" uid="uid://d340p2pdwdmkq" path="res://assets/airplane.png" id="2_niy1t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmghq"]
 size = Vector2(160, 416)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhbqj"]
+size = Vector2(620.762, 544.954)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3d17w"]
+size = Vector2(954.133, 494.448)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4y4yd"]
+size = Vector2(345.867, 646.35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jn046"]
+size = Vector2(460.125, 534.954)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8hkm"]
+size = Vector2(1034.29, 617.146)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a63tw"]
+size = Vector2(612.192, 373.133)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjylw"]
+size = Vector2(982.859, 1086.62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2mbmi"]
+size = Vector2(143.197, 927.765)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8nhw0"]
+size = Vector2(330.599, 776.237)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q68uw"]
+size = Vector2(463.61, 1331.8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2eck"]
+size = Vector2(2493.77, 476.921)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrcfm"]
+size = Vector2(769.684, 454.021)
 
 [node name="AirplaneZone" type="Node2D"]
 scale = Vector2(0.7, 0.7)
@@ -12,12 +48,119 @@ script = ExtResource("1_uyhfs")
 
 [node name="AirplaneZoneBackground" type="Sprite2D" parent="."]
 position = Vector2(2400, -952)
-texture = ExtResource("2_30t8t")
+texture = ExtResource("2_niy1t")
 
 [node name="ZoneTransitionA" type="Area2D" parent="."]
 position = Vector2(4720, -256)
 
 [node name="ZoneCollisionA" type="CollisionShape2D" parent="ZoneTransitionA"]
 shape = SubResource("RectangleShape2D_vmghq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(2297.14, -2034.29)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 34.2855)
+rotation = -0.598648
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_hhbqj")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(1577.14, -1520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-56.6918, 60.4675)
+rotation = -0.598648
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_3d17w")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(2880, -1302.86)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(-125.714, 354.286)
+rotation = 0.240855
+scale = Vector2(0.999997, 0.999997)
+shape = SubResource("RectangleShape2D_4y4yd")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(2902.86, -1485.71)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(-3.7041, -30.9197)
+rotation = 0.244346
+scale = Vector2(0.999996, 0.999996)
+shape = SubResource("RectangleShape2D_jn046")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="."]
+position = Vector2(2811.43, -2080)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
+position = Vector2(100.001, 79.9994)
+scale = Vector2(0.999996, 0.999996)
+shape = SubResource("RectangleShape2D_u8hkm")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="."]
+position = Vector2(3428.57, -1920)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D6"]
+position = Vector2(54.0046, 41.3523)
+rotation = 0.483456
+scale = Vector2(0.999996, 0.999996)
+shape = SubResource("RectangleShape2D_a63tw")
+
+[node name="SpawnArea1" type="Area2D" parent="."]
+position = Vector2(3577.14, -982.857)
+rotation = 0.253073
+
+[node name="SpawnCollision1" type="CollisionShape2D" parent="SpawnArea1"]
+position = Vector2(0.000976563, -0.00012207)
+scale = Vector2(0.999998, 0.999998)
+shape = SubResource("RectangleShape2D_xjylw")
+
+[node name="SpawnArea2" type="Area2D" parent="."]
+position = Vector2(2434.29, -1177.14)
+rotation = 0.253073
+
+[node name="SpawnCollision2" type="CollisionShape2D" parent="SpawnArea2"]
+position = Vector2(-9.15527e-05, 0.000183105)
+scale = Vector2(0.999998, 0.999998)
+shape = SubResource("RectangleShape2D_2mbmi")
+
+[node name="SpawnArea3" type="Area2D" parent="."]
+position = Vector2(2171.43, -1165.71)
+rotation = 0.253073
+
+[node name="SpawnCollision3" type="CollisionShape2D" parent="SpawnArea3"]
+position = Vector2(9.15527e-05, 6.86646e-05)
+scale = Vector2(0.999998, 0.999998)
+shape = SubResource("RectangleShape2D_8nhw0")
+
+[node name="SpawnArea4" type="Area2D" parent="."]
+position = Vector2(1817.14, -720)
+rotation = 0.968658
+
+[node name="SpawnCollision4" type="CollisionShape2D" parent="SpawnArea4"]
+position = Vector2(-0.000350952, 0.000137329)
+scale = Vector2(0.999997, 0.999997)
+shape = SubResource("RectangleShape2D_q68uw")
+
+[node name="SpawnArea5" type="Area2D" parent="."]
+position = Vector2(2640, -354.286)
+rotation = 0.253073
+
+[node name="SpawnCollision5" type="CollisionShape2D" parent="SpawnArea5"]
+position = Vector2(0.000275612, 8.22544e-05)
+scale = Vector2(0.999996, 0.999996)
+shape = SubResource("RectangleShape2D_d2eck")
+
+[node name="SpawnArea6" type="Area2D" parent="."]
+position = Vector2(822.857, -1062.86)
+rotation = 0.977384
+
+[node name="SpawnCollision6" type="CollisionShape2D" parent="SpawnArea6"]
+position = Vector2(-0.000278473, 0.000137329)
+scale = Vector2(0.999996, 0.999996)
+shape = SubResource("RectangleShape2D_rrcfm")
 
 [connection signal="body_entered" from="ZoneTransitionA" to="." method="_on_ZoneTransitionA_body_entered"]

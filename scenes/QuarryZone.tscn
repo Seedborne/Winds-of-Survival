@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://co6yuwb1ketvk"]
+[gd_scene load_steps=7 format=3 uid="uid://co6yuwb1ketvk"]
 
 [ext_resource type="Script" path="res://scripts/quarry_zone.gd" id="1_lc7tx"]
-[ext_resource type="Texture2D" uid="uid://y1gc5f2ut36m" path="res://assets/stormart upper area4.png" id="1_xrciw"]
+[ext_resource type="Texture2D" uid="uid://btxgenvimdyb0" path="res://assets/quarry4.png" id="2_ohfen"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pnps1"]
 size = Vector2(496, 256)
@@ -9,25 +9,49 @@ size = Vector2(496, 256)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_js4l0"]
 size = Vector2(192, 416)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cnm7"]
+size = Vector2(1868.57, 2228.57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgaej"]
+size = Vector2(1885.72, 2205.72)
+
 [node name="QuarryZone" type="Node2D"]
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_lc7tx")
 
 [node name="QuarryZoneBackground" type="Sprite2D" parent="."]
 position = Vector2(2400, -952)
-texture = ExtResource("1_xrciw")
+texture = ExtResource("2_ohfen")
 
 [node name="ZoneTransitionA" type="Area2D" parent="."]
 position = Vector2(4240, 520)
 
 [node name="ZoneCollisionA" type="CollisionShape2D" parent="ZoneTransitionA"]
+position = Vector2(-34.2857, 5.71429)
 shape = SubResource("RectangleShape2D_pnps1")
 
 [node name="ZoneTransitionB" type="Area2D" parent="."]
 position = Vector2(96, -240)
 
 [node name="ZoneCollisionB" type="CollisionShape2D" parent="ZoneTransitionB"]
+position = Vector2(-4.57142, 57.1429)
 shape = SubResource("RectangleShape2D_js4l0")
+
+[node name="SpawnArea1" type="Area2D" parent="."]
+position = Vector2(3440, -1451.43)
+
+[node name="SpawnCollision1" type="CollisionShape2D" parent="SpawnArea1"]
+position = Vector2(11.4285, 0)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_4cnm7")
+
+[node name="SpawnArea2" type="Area2D" parent="."]
+position = Vector2(1565.71, -1451.43)
+
+[node name="SpawnCollision2" type="CollisionShape2D" parent="SpawnArea2"]
+position = Vector2(-5.71436, 5.71387)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_fgaej")
 
 [connection signal="body_entered" from="ZoneTransitionA" to="." method="_on_ZoneTransitionA_body_entered"]
 [connection signal="body_entered" from="ZoneTransitionB" to="." method="_on_ZoneTransitionB_body_entered"]

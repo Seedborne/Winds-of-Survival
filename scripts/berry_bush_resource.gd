@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var respawn_time: float = 60.0
-@export var collection_time: float = 2.0
+@export var collection_time: float = 1.0
 @export var min_distance_between_resources: float = 250.0
 
 var berries_in_bush = load("res://assets/Bushwith.png")
@@ -10,6 +10,7 @@ var berriless_bush = load("res://assets/bushwithout.png")
 var is_available: bool = true
 var is_collecting: bool = false
 var collection_timer: float = 0.0
+var near_resource: bool = false
 
 func _ready() -> void:
 	$BushSprite.set_texture(berries_in_bush)
@@ -22,21 +23,25 @@ func _process(delta: float) -> void:
 				complete_collection()
 		else:
 			reset_collection()
-	if Input.is_action_just_pressed("interact") and $InteractLabel.visible and is_available:
+	if Input.is_action_just_pressed("interact") and near_resource and is_available:
 		start_collection()
 
 func _on_bush_area_body_entered(body: Node) -> void:
 	if body is Player and is_available and $BushSprite.texture == berries_in_bush:
-		$InteractLabel.show()
+		near_resource = true
+		if Globals.tutorial_mode_on:
+			$InteractLabel.show()
 
 func _on_bush_area_body_exited(body: Node) -> void:
 	if body is Player:
+		near_resource = false
 		$InteractLabel.visible = false
 		reset_collection()
 
 func start_collection() -> void:
 	is_collecting = true
 	collection_timer = 0.0
+	$BushAudio.play()
 	print("Player started collecting...")
 
 func reset_collection() -> void:

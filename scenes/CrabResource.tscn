@@ -1,12 +1,70 @@
-[gd_scene load_steps=2 format=3 uid="uid://c72xsrfbj1jvu"]
+[gd_scene load_steps=8 format=3 uid="uid://c72xsrfbj1jvu"]
+
+[ext_resource type="Script" path="res://scripts/crab_resource.gd" id="1_63uyh"]
+[ext_resource type="Texture2D" uid="uid://jwqtuc67kx3u" path="res://assets/krab.png" id="1_n2iu6"]
+[ext_resource type="Texture2D" uid="uid://c72p0tkauydja" path="res://assets/krab2.png" id="2_hhj7m"]
+[ext_resource type="AudioStream" uid="uid://bb5sklehj2dom" path="res://assets/newaudio/rabbitcrabcollect.mp3" id="4_50jm6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_euw7h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_n2iu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hhj7m")
+}],
+"loop": true,
+"name": &"crawl",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eaiv7"]
+size = Vector2(160, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iylqj"]
+size = Vector2(120, 48)
 
 [node name="CrabResource" type="Node2D" groups=["resources"]]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_63uyh")
 
-[node name="CrabSprite" type="Sprite2D" parent="."]
+[node name="CrabSprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_euw7h")
+animation = &"crawl"
+frame_progress = 0.294812
+speed_scale = 0.5
 
 [node name="CrabArea" type="Area2D" parent="."]
 
 [node name="CrabCollision" type="CollisionShape2D" parent="CrabArea"]
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_eaiv7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4, 24)
+shape = SubResource("RectangleShape2D_iylqj")
+
+[node name="InteractLabel" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -96.0
+offset_top = 16.0
+offset_right = 92.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(0.945098, 0.905882, 0.807843, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 28
+text = "E to collect"
+horizontal_alignment = 1
+
+[node name="CrabAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_50jm6")
+volume_db = 18.0
+
+[connection signal="body_entered" from="CrabArea" to="." method="_on_crab_area_body_entered"]
+[connection signal="body_exited" from="CrabArea" to="." method="_on_crab_area_body_exited"]
